@@ -60,7 +60,7 @@ class Game {
     ]
   }
 
-  shuffleDeck(deck) {
+  shuffleDeck() {
     for(var i = 0; i < 1000; i++) {
       var swap1 = Math.floor((Math.random() * this.deck.length));
       var swap2 = Math.floor((Math.random()) * this.deck.length);
@@ -72,10 +72,9 @@ class Game {
   }
 
   deal() {
-    var shuffledDeck = this.shuffleDeck(this.mainDeck);
-    this.player1.playerHand.push(shuffledDeck.slice(0,27))
-    this.player2.playerHand.push(shuffle.slice(27, shuffledDeck.length))
-
+    var shuffledDeck = this.deck
+    player1.playerHand.push(shuffledDeck.slice(0,26))
+    player2.playerHand.push(shuffledDeck.slice(26, shuffledDeck.length))
   }
 
 
