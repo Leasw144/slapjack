@@ -61,13 +61,13 @@ class Game {
   }
 
   shuffleDeck(deck) {
-    for(var = 0; i < 1000; i++) {
-      var swap1 = Math.floor((Math.random() * deck.length));
-      var swap2 = Math.floor((Math.random()) * deck.length);
-      var dis = deck[swap1]
+    for(var i = 0; i < 1000; i++) {
+      var swap1 = Math.floor((Math.random() * this.deck.length));
+      var swap2 = Math.floor((Math.random()) * this.deck.length);
+      var dis = this.deck[swap1]
 
-      deck[swap1] = deck[swap2]
-      deck[swap2] = dis;
+      this.deck[swap1] = this.deck[swap2]
+      this.deck[swap2] = dis;
     }
   }
 
@@ -79,17 +79,17 @@ class Game {
   }
 
 
-  setWinCondition() {
-    if(mainDeck[0] === mainDeck[1]) {
-      playerDeck.concat(mainDeck)
-    } else if(mainDeck[0].11) {
-      board.filter()
-      this.deck = []
-    } else if(mainDeck[0] === mainDeck[2]) {
-      //same thing
-    }
-    //player one removes element[0] from thier deck, it gets pushed to player 2's deck.
-  }
+  // setWinCondition() {
+  //   if(mainDeck[0] === mainDeck[1]) {
+  //     playerDeck.concat(mainDeck)
+  //   } else if(mainDeck[0]) {
+  //     board.filter()
+  //     this.deck = []
+  //   } else if(mainDeck[0] === mainDeck[2]) {
+  //     //same thing
+  //   }
+  //   //player one removes element[0] from thier deck, it gets pushed to player 2's deck.
+  // }
 
   matchWinCondition() {
     if(playerDeck === []) {
