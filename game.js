@@ -71,7 +71,7 @@ class Game {
     }
   }
 
-  deal() {
+  dealDeck() {
     var shuffledDeck = this.deck
     player1.playerHand.push(shuffledDeck.slice(0,26))
     player2.playerHand.push(shuffledDeck.slice(26, shuffledDeck.length))

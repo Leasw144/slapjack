@@ -6,6 +6,9 @@ class Player {
     ]
     this.wins = 0
   }
+
+  // deal() 
+
 }
 
 
