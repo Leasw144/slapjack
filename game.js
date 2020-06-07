@@ -1,9 +1,9 @@
 class Game {
   constructor() {
-    this.player1 = new Player(1);
-    this.player2 = new Player(2);
+    this.p1 = new Player(1)
+    this.p2 = new Player(2)
     this.pile = []
-    this.currentPlayer = false
+    this.player1Turn = true
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -77,12 +77,28 @@ class Game {
     player2.playerHand = shuffledDeck.slice(26, shuffledDeck.length)
   }
 
-  swapPlayerTurn() {
-    if(currentPlayer.playerTurn) {
-      console.log(`swap conditional met`)
-      this.currentPlayer = !this.currentPlayer;
+  swapPlayerTurn(currentPlayer) {
+    // currentPlayer;
+    if(this.player1Turn === true) {
+      game.player1Turn = false
+      currentPlayer = player2
+    } else if(this.player1Turn === false){   
+      currentPlayer = player1
+      this.player1Turn = true
+    }
+    return currentPlayer
+  }
+
+  setCondition() {
+    if(this.pile[0] === this.pile[2] || this.pile[0] === this.pile[1] || this.pile[0] === 11) {
+      currentPlayer.playerHand = currentPlayer.playerHand.concat(this.pile)
+    } else {
+      currentPlayer.playerHand
     } 
   }
+}
+
+
 
   // setWinCondition() {
   //   if(mainDeck[0] === mainDeck[1]) {
@@ -103,4 +119,3 @@ class Game {
   // }
 
   
-}
