@@ -60,14 +60,14 @@ class Game {
     ]
   }
 
-  shuffleDeck() {
+  shuffleDeck(deck) {
     for(var i = 0; i < 1000; i++) {
-      var swap1 = Math.floor((Math.random() * this.deck.length));
-      var swap2 = Math.floor((Math.random()) * this.deck.length);
-      var dis = this.deck[swap1]
+      var swap1 = Math.floor((Math.random() * deck.length));
+      var swap2 = Math.floor((Math.random()) * deck.length);
+      var dis = deck[swap1]
 
-      this.deck[swap1] = this.deck[swap2]
-      this.deck[swap2] = dis;
+      deck[swap1] = deck[swap2]
+      deck[swap2] = dis;
     }
   }
 

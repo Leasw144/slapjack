@@ -11,7 +11,7 @@ window.addEventListener(`load`, distributeCards)
 
 function distributeCards() {
   console.log(`this is working`)
-  game.shuffleDeck();
+  game.shuffleDeck(game.deck);
   game.dealDeck()
 }
 
