@@ -79,7 +79,7 @@ class Game {
 
   swapPlayerTurn(currentPlayer) {
     // currentPlayer;
-    if(this.player1Turn === true) {
+    if(this.player1Turn) {
       game.player1Turn = false
       currentPlayer = player2
     } else if(this.player1Turn === false){   
@@ -93,6 +93,7 @@ class Game {
     if(this.pile[0] === this.pile[2] || this.pile[0] === this.pile[1] || this.pile[0] === 11) {
       currentPlayer.playerHand = currentPlayer.playerHand.concat(this.pile)
       this.shuffleDeck(currentPlayer.playerHand)
+      currentPlayer.wins++
       console.log(`this person won the set`, currentPlayer.playerHand)
     } else {
       this.forfeitCard()

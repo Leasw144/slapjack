@@ -2,7 +2,7 @@ var game = new Game();
 var player1 = new Player(1);
 var player2 = new Player(2)
 
-var currentPlayer = player1
+var currentPlayer = this.player1Turn === true ? player1 : player2
 
 
 window.addEventListener(`load`, distributeCards)
@@ -17,4 +17,6 @@ function distributeCards() {
 
 function playerDeal() {
   currentPlayer.deal()
+  currentPlayer.player1turn = !currentPlayer.player1Turn
 }
+
