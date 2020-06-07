@@ -1,7 +1,7 @@
 class Game {
   constructor() {
-    this.p1 = new Player(1)
-    this.p2 = new Player(2)
+    this.player1 = new Player(1)
+    this.player2 = new Player(2)
     this.pile = [1, 2, 1, 3]
     this.player1Turn = true
     this.deck = [
@@ -87,6 +87,13 @@ class Game {
       this.player1Turn = true
     }
     return currentPlayer
+  }
+
+  testCurrentPlayer() {
+    var currentPlayer= this.swapPlayerTurn()
+    console.log(currentPlayer)
+    currentPlayer.deal()
+    console.log(currentPlayer.playerHand)
   }
 
   setCondition() {
