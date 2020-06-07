@@ -2,8 +2,8 @@ class Game {
   constructor() {
     this.player1 = new Player(1);
     this.player2 = new Player(2);
-    this.mainPile = []
-    this.currentPlayer = true
+    this.pile = []
+    this.currentPlayer = false
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -73,10 +73,16 @@ class Game {
 
   dealDeck() {
     var shuffledDeck = this.deck
-    player1.playerHand.push(shuffledDeck.slice(0,26))
-    player2.playerHand.push(shuffledDeck.slice(26, shuffledDeck.length))
+    player1.playerHand = shuffledDeck.slice(0,26)
+    player2.playerHand = shuffledDeck.slice(26, shuffledDeck.length)
   }
 
+  swapPlayerTurn() {
+    if(currentPlayer.playerTurn) {
+      console.log(`swap conditional met`)
+      this.currentPlayer = !this.currentPlayer;
+    } 
+  }
 
   // setWinCondition() {
   //   if(mainDeck[0] === mainDeck[1]) {
@@ -90,11 +96,11 @@ class Game {
   //   //player one removes element[0] from thier deck, it gets pushed to player 2's deck.
   // }
 
-  matchWinCondition() {
-    if(playerDeck === []) {
+  // matchWinCondition() {
+  //   if(playerDeck === []) {
       
-    }
-  }
+  //   }
+  // }
 
   
 }
