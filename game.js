@@ -2,8 +2,9 @@ class Game {
   constructor() {
     this.player1 = new Player(1)
     this.player2 = new Player(2)
-    this.pile = [1, 2, 1, 3]
     this.player1Turn = true
+    this.currentPlayer = this.player1Turn ? this.player1 : this.player2
+    this.pile = [1, 2, 1, 3]
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -73,28 +74,22 @@ class Game {
 
   dealDeck() {
     var shuffledDeck = this.deck
-    player1.playerHand = shuffledDeck.slice(0,26)
-    player2.playerHand = shuffledDeck.slice(26, shuffledDeck.length)
+    this.player1.playerHand = shuffledDeck.slice(0,26)
+    this.player2.playerHand = shuffledDeck.slice(26, shuffledDeck.length)
   }
 
   swapPlayerTurn(currentPlayer) {
     // currentPlayer;
     if(this.player1Turn) {
-      game.player1Turn = false
-      currentPlayer = player2
+      this.player1Turn = false
+      this.currentPlayer = this.player2
     } else if(this.player1Turn === false){   
-      currentPlayer = player1
+      this.currentPlayer = this.player1
       this.player1Turn = true
     }
     return currentPlayer
   }
 
-  testCurrentPlayer() {
-    var currentPlayer= this.swapPlayerTurn()
-    console.log(currentPlayer)
-    currentPlayer.deal()
-    console.log(currentPlayer.playerHand)
-  }
 
   setCondition() {
     if(this.pile[0] === this.pile[2] || this.pile[0] === this.pile[1] || this.pile[0] === 11) {
