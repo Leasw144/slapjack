@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.p1 = new Player(1)
     this.p2 = new Player(2)
-    this.pile = []
+    this.pile = [1, 2, 1, 3]
     this.player1Turn = true
     this.deck = [
       './assets/blue-01.png',
@@ -92,12 +92,25 @@ class Game {
   setCondition() {
     if(this.pile[0] === this.pile[2] || this.pile[0] === this.pile[1] || this.pile[0] === 11) {
       currentPlayer.playerHand = currentPlayer.playerHand.concat(this.pile)
+      this.shuffleDeck(currentPlayer.playerHand)
+      console.log(`this person won the set`, currentPlayer.playerHand)
     } else {
-      currentPlayer.playerHand
+      this.forfeitCard()
     } 
+  } 
+
+
+  forfeitCard() {
+    var forfeitedCard = currentPlayer.playerHand.shift()
+    if (currentPlayer === player1) {
+      currentPlayer.playerHand.shift(forfeitedCard)
+      player2.playerHand.push(dealtCard) 
+    } else {
+        currentPlayer.playerHand.shift(forfeitedCard)
+        player1.playerHand.push(dealtCard) 
+      }
   }
 }
-
 
 
   // setWinCondition() {
