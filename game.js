@@ -1,9 +1,10 @@
 class Game {
   constructor() {
-    this.p1 = new Player(1)
-    this.p2 = new Player(2)
-    this.pile = [1, 2, 1, 3]
+    this.player1 = new Player(1)
+    this.player2 = new Player(2)
     this.player1Turn = true
+    this.currentPlayer = this.player1Turn ? this.player1 : this.player2
+    this.pile = []
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -14,7 +15,7 @@ class Game {
       './assets/blue-07.png',
       './assets/blue-08.png',
       './assets/blue-09.png',
-      './assets/blue-010.png',
+      './assets/blue-10.png',
       './assets/blue-jack.png',
       './assets/blue-queen.png',
       './assets/blue-king.png',
@@ -73,42 +74,73 @@ class Game {
 
   dealDeck() {
     var shuffledDeck = this.deck
-    player1.playerHand = shuffledDeck.slice(0,26)
-    player2.playerHand = shuffledDeck.slice(26, shuffledDeck.length)
+    this.player1.playerHand = shuffledDeck.slice(0,26)
+    this.player2.playerHand = shuffledDeck.slice(26, shuffledDeck.length)
   }
 
   swapPlayerTurn(currentPlayer) {
     // currentPlayer;
     if(this.player1Turn) {
-      game.player1Turn = false
-      currentPlayer = player2
+      this.player1Turn = false
+      this.currentPlayer = this.player2
     } else if(this.player1Turn === false){   
-      currentPlayer = player1
+      this.currentPlayer = this.player1
       this.player1Turn = true
     }
     return currentPlayer
   }
 
-  setCondition() {
-    if(this.pile[0] === this.pile[2] || this.pile[0] === this.pile[1] || this.pile[0] === 11) {
-      currentPlayer.playerHand = currentPlayer.playerHand.concat(this.pile)
-      this.shuffleDeck(currentPlayer.playerHand)
-      currentPlayer.wins++
-      console.log(`this person won the set`, currentPlayer.playerHand)
-    } else {
-      this.forfeitCard()
-    } 
-  } 
+  regexTest() {
+    var cardString = this.pile[0]
+    var nextCard = this.pile[1]
+    var regex = /-\d+|jack/
+    var m = regex.exec(cardString)
+  
+    console.log(m)
+    var v = regex.exec(nextCard);
+ 
+    if (m[1] === v[1]) {
+      console.log('works')
+      alert(m[0])
+    } else{
+      return 'doesn\'t work'
+    }
+  }
 
+
+  checkSlap() {
+    var regex = /-\d+|jack/
+    var topCard = regex.exec(this.pile[0]) || [1];
+    var nextCard = regex.exec(this.pile[1]) || [2];
+    var thirdCard = regex.exec(this.pile[2]) || [3];
+    if (topCard[0] === thirdCard[0]) {      
+      this.winSet()
+      return `SAMICH`
+    } else if (topCard[0] === nextCard[0]) {
+      this.winSet()
+      return `Doubles!`
+    } else if (topCard[0] === 'jack'){
+      this.winSet()
+      return `Slapjack!`
+    }
+    this.forfeitCard()
+    return `MISSED`
+  } 
+   
+  winSet() {
+    this.currentPlayer.playerHand = this.currentPlayer.playerHand.concat(this.pile)
+    this.pile = []
+    this.swapPlayerTurn()
+  }
 
   forfeitCard() {
-    var forfeitedCard = currentPlayer.playerHand.shift()
-    if (currentPlayer === player1) {
-      currentPlayer.playerHand.shift(forfeitedCard)
-      player2.playerHand.push(dealtCard) 
+    var forfeitedCard = this.currentPlayer.playerHand.shift()
+    if (this.currentPlayer === this.player1) {
+      this.currentPlayer.playerHand.shift(forfeitedCard)
+      this.player2.playerHand.push(forfeitedCard) 
     } else {
-        currentPlayer.playerHand.shift(forfeitedCard)
-        player1.playerHand.push(dealtCard) 
+        this.currentPlayer.playerHand.shift(forfeitedCard)
+        this.player1.playerHand.push(forfeitedCard) 
       }
   }
 }
