@@ -4,7 +4,7 @@ class Game {
     this.player2 = new Player(2)
     this.player1Turn = true
     this.currentPlayer = this.player1Turn ? this.player1 : this.player2
-    this.pile = ['./assets/gold-jack.png', './assets/red-05.png', './assets/blue-05.png']
+    this.pile = []
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -107,22 +107,31 @@ class Game {
     }
   }
 
-  winSetCondition() {
+  
+  checkSlap() {
     var regex = /-\d+|jack/
-    var topCard = regex.exec(this.pile[0]) || [];
-    var nextCard = regex.exec(this.pile[1]) ||[];
-    var thirdCard = regex.exec(this.pile[2]) || [];
-    debugger
-    if (topCard[0] === thirdCard[0] || topCard[0] === nextCard[0] || topCard[0]  === 'jack') {
-      this.currentPlayer.playerHand = this.currentPlayer.playerHand.concat(this.pile)
-      this.pile = []
-      console.log(`this person won the set`, this.pile)
-    } else {
-      this.forfeitCard()
-      console.log('didn\'t work')
-    } 
+    var topCard = regex.exec(this.pile[0]) || [1];
+    var nextCard = regex.exec(this.pile[1]) || [2];
+    var thirdCard = regex.exec(this.pile[2]) || [3];
+    if (topCard[0] === thirdCard[0]) {      
+      this.winSet()
+      return `SAMICH`
+    } else if (topCard[0] === nextCard[0]) {
+      this.winSet()
+      return `Doubles!`
+    } else if (topCard[0] === 'jack'){
+      this.winSet()
+      return `Slapjack!`
+    }
+    this.forfeitCard()
+    return `MISSED`
   } 
-
+   
+  winSet() {
+    this.currentPlayer.playerHand = this.currentPlayer.playerHand.concat(this.pile)
+    this.pile = []
+    this.swapPlayerTurn()
+  }
 
   forfeitCard() {
     var forfeitedCard = this.currentPlayer.playerHand.shift()
