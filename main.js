@@ -1,6 +1,8 @@
 var game = new Game();
 var player1 = game.player1
 var player2 = game.player2
+var pile = document.querySelector('.pile')
+// var currentPlayer = game.currentPlayer
 // var currentPlayer;
 // var currentPlayer = game.player1Turn === true ? player1 : player2
 
@@ -17,7 +19,10 @@ function distributeCards() {
 }
 
 function playerDeal() {
+  
   if (event.keyCode == 81 && game.currentPlayer === player1) {
+    player1.deal()
+    pile.src = game.pile[0]
     //when a player deals, this will happen 
     // // element leaves player hand and goes to pile.
     // // pile displays this card

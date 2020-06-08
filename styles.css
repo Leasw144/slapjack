@@ -19,3 +19,19 @@ img {
   border-radius: 20px;
   
 }
+
+.glow-p1 {
+  background-color: #fff;
+  box-shadow: -1em 1em 2em 0em #0FF
+}
+
+.glow-p2 {
+  background-color: #fff;
+  box-shadow: 1em 1em 3em 1em #138;
+}
+
+
+
+
+
+
