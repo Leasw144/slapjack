@@ -4,7 +4,7 @@ class Game {
     this.player2 = new Player(2)
     this.player1Turn = true
     this.currentPlayer = this.player1Turn ? this.player1 : this.player2
-    this.pile = [1, 2, 1, 3]
+    this.pile = ['./assets/blue-01.png', './assets/gold-01.png', '-1', '-3']
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -90,8 +90,25 @@ class Game {
     return currentPlayer
   }
 
+  regexTest() {
+    var cardString = this.pile[0]
+    var nextCard = this.pile[1]
+    var regex = /-\d+/
+    var m = regex.exec(cardString)
+  
+    console.log(m)
+    var v = regex.exec(nextCard);
+ 
+    if (m[1] === v[1]) {
+      console.log('works')
+      alert(m[0])
+    } else{
+      return 'doesn\'t work'
+    }
+  }
 
-  setCondition() {
+  winSetCondition() {
+
     if(this.pile[0] === this.pile[2] || this.pile[0] === this.pile[1] || this.pile[0] === 11) {
       currentPlayer.playerHand = currentPlayer.playerHand.concat(this.pile)
       this.shuffleDeck(currentPlayer.playerHand)
