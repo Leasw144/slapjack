@@ -4,7 +4,7 @@ class Game {
     this.player2 = new Player(2)
     this.player1Turn = true
     this.currentPlayer = this.player1Turn ? this.player1 : this.player2
-    this.pile = ['./assets/blue-01.png', './assets/gold-01.png', '-1', '-3']
+    this.pile = ['beginning-01','./assets/blue-01.png', './assets/blue-01.png', './assets/gold-01.png', '-1', '-3']
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -108,26 +108,30 @@ class Game {
   }
 
   winSetCondition() {
-
-    if(this.pile[0] === this.pile[2] || this.pile[0] === this.pile[1] || this.pile[0] === 11) {
-      currentPlayer.playerHand = currentPlayer.playerHand.concat(this.pile)
-      this.shuffleDeck(currentPlayer.playerHand)
-      currentPlayer.wins++
-      console.log(`this person won the set`, currentPlayer.playerHand)
+    var regex = /-\d+/
+    var topCard = regex.exec(this.pile[0]);
+    var nextCard = regex.exec(this.pile[1]);
+    var thirdCard = regex.exec(this.pile[2]);
+ 
+    if (topCard[0] === thirdCard[0] || topCard[0] === nextCard[0] || topCard[0]  === 11) {
+      this.currentPlayer.playerHand = this.currentPlayer.playerHand.concat(this.pile)
+      this.pile = []
+      console.log(`this person won the set`, this.pile)
     } else {
       this.forfeitCard()
+      console.log('didn\'t work')
     } 
   } 
 
 
   forfeitCard() {
-    var forfeitedCard = currentPlayer.playerHand.shift()
-    if (currentPlayer === player1) {
-      currentPlayer.playerHand.shift(forfeitedCard)
-      player2.playerHand.push(dealtCard) 
+    var forfeitedCard = this.currentPlayer.playerHand.shift()
+    if (this.currentPlayer === this.player1) {
+      this.currentPlayer.playerHand.shift(forfeitedCard)
+      this.player2.playerHand.push(forfeitedCard) 
     } else {
-        currentPlayer.playerHand.shift(forfeitedCard)
-        player1.playerHand.push(dealtCard) 
+        this.currentPlayer.playerHand.shift(forfeitedCard)
+        this.player1.playerHand.push(forfeitedCard) 
       }
   }
 }
