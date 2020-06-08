@@ -4,7 +4,7 @@ class Game {
     this.player2 = new Player(2)
     this.player1Turn = true
     this.currentPlayer = this.player1Turn ? this.player1 : this.player2
-    this.pile = ['beginning-01','./assets/blue-01.png', './assets/blue-01.png', './assets/gold-01.png', '-1', '-3']
+    this.pile = ['./assets/gold-jack.png', './assets/red-05.png', './assets/blue-05.png']
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -93,7 +93,7 @@ class Game {
   regexTest() {
     var cardString = this.pile[0]
     var nextCard = this.pile[1]
-    var regex = /-\d+/
+    var regex = /-\d+|jack/
     var m = regex.exec(cardString)
   
     console.log(m)
@@ -108,12 +108,12 @@ class Game {
   }
 
   winSetCondition() {
-    var regex = /-\d+/
-    var topCard = regex.exec(this.pile[0]);
-    var nextCard = regex.exec(this.pile[1]);
-    var thirdCard = regex.exec(this.pile[2]);
- 
-    if (topCard[0] === thirdCard[0] || topCard[0] === nextCard[0] || topCard[0]  === 11) {
+    var regex = /-\d+|jack/
+    var topCard = regex.exec(this.pile[0]) || [];
+    var nextCard = regex.exec(this.pile[1]) ||[];
+    var thirdCard = regex.exec(this.pile[2]) || [];
+    debugger
+    if (topCard[0] === thirdCard[0] || topCard[0] === nextCard[0] || topCard[0]  === 'jack') {
       this.currentPlayer.playerHand = this.currentPlayer.playerHand.concat(this.pile)
       this.pile = []
       console.log(`this person won the set`, this.pile)

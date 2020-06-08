@@ -2,9 +2,7 @@ class Player {
   constructor(id) {
     this.id = id
     this.playerHand = [
-    ]
-    // this.currentPlayer = true
-  
+    ]  
     this.wins = 0
   }
 
