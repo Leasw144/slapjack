@@ -34,9 +34,13 @@ function playerDeal() {
     console.log(`you pressed Q`)
   } else if (event.keyCode == 70) {
     var set = game.checkSlap()
-    var match = checkMatch()
-      if(!set === `missed` && match === false) {
+    var match = game.checkMatch()
+      if(set === `missed`) {
+        forefeitCard()
+        alert(`MISSED`)
+      } else {
         announceWin(set)
+
       }
     // When a player slaps, this will happen
     // // the game will check for a set win
@@ -69,6 +73,7 @@ function playerDeal() {
 }
 
 function announceWin(winType) {
+  var announcement = document.querySelector('.announcement')
   var p1WinCounter = document.querySelector('.p1-win-counter')
   var p2WinCounter = document.querySelector('.p2-win-counter')
   announcement.innerText = winType
