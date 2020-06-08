@@ -20,7 +20,8 @@ function distributeCards() {
 
 function playerDeal() {
   
-  if (event.keyCode == 81 && game.currentPlayer === player1) {
+  if (event.keyCode == 81) {
+    game.becomeCurrentPlayer()
     player1.deal()
     pile.src = game.pile[0]
     removeClass()
@@ -39,7 +40,8 @@ function playerDeal() {
     // // show alert that you done messed up
     // // swap player
     console.log(`you pressed F`)
-  } else if (event.keyCode == 80 && game.currentPlayer === player2 ) {
+  } else if (event.keyCode == 80) {
+    game.becomeCurrentPlayer()
     player2.deal()
     pile.src = game.pile[0]
     removeClass()
