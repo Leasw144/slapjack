@@ -15,7 +15,7 @@ class Game {
       './assets/blue-07.png',
       './assets/blue-08.png',
       './assets/blue-09.png',
-      './assets/blue-010.png',
+      './assets/blue-10.png',
       './assets/blue-jack.png',
       './assets/blue-queen.png',
       './assets/blue-king.png',
@@ -107,7 +107,7 @@ class Game {
     }
   }
 
-  
+
   checkSlap() {
     var regex = /-\d+|jack/
     var topCard = regex.exec(this.pile[0]) || [1];

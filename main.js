@@ -23,6 +23,8 @@ function playerDeal() {
   if (event.keyCode == 81 && game.currentPlayer === player1) {
     player1.deal()
     pile.src = game.pile[0]
+    removeClass()
+    pile.classList.add('glow-p1')
     //when a player deals, this will happen 
     // // element leaves player hand and goes to pile.
     // // pile displays this card
@@ -38,6 +40,10 @@ function playerDeal() {
     // // swap player
     console.log(`you pressed F`)
   } else if (event.keyCode == 80 && game.currentPlayer === player2 ) {
+    player2.deal()
+    pile.src = game.pile[0]
+    removeClass()
+    pile.classList.toggle('glow-p2')
     //when a player deals, this will happen 
     // // element leaves player hand and goes to pile.
     // // pile displays this card
@@ -55,3 +61,6 @@ function playerDeal() {
   }
 }
 
+function removeClass() {
+  pile.className = ''
+}
