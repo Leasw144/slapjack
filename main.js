@@ -20,7 +20,7 @@ function distributeCards() {
 
 function playerDeal() {
   
-  if (event.keyCode == 81) {
+  if (event.keyCode == 81 && game.currentPlayer === player1) {
     game.becomeCurrentPlayer()
     player1.deal()
     pile.src = game.pile[0]
@@ -32,7 +32,7 @@ function playerDeal() {
     // // //this will happen by changing the src
     // // //this function will disable
     console.log(`you pressed Q`)
-  } else if (event.keyCode == 70 && game.currentPlayer === player1) {
+  } else if (event.keyCode == 70) {
     // When a player slaps, this will happen
     // // the game will check for a set win
     // // the game will check for a match win
@@ -40,7 +40,7 @@ function playerDeal() {
     // // show alert that you done messed up
     // // swap player
     console.log(`you pressed F`)
-  } else if (event.keyCode == 80) {
+  } else if (event.keyCode == 80 && game.currentPlayer === player2) {
     game.becomeCurrentPlayer()
     player2.deal()
     pile.src = game.pile[0]
@@ -52,7 +52,7 @@ function playerDeal() {
     // // //this will happen by changing the src
     // // //this function will disable
     console.log(`you pressed P`)
-  } else if (event.keyCode == 74 && game.currentPlayer === player2) {
+  } else if (event.keyCode == 74) {
      // When a player slaps, this will happen
     // // the game will check for a set win
     // // the game will check for a match win
