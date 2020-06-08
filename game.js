@@ -132,11 +132,17 @@ class Game {
     this.swapPlayerTurn()
   }
   
-  checkMatch() {
-    if(game.player1.playerHand === []|| game.player2.playerHand === []) {
-
+  checkMatch(slapResult) {
+    if(game.player1.playerHand === [] && slapResult !== `missed`) {
+      this.player2.wins++
+      return true
+    } else if (game.player2.playerHand === [] && slapResult !== `missed`) {
+      this.player1.wins++
+      return true
     }
+    return false
   }
+  
   forfeitCard() {
     var forfeitedCard = this.currentPlayer.playerHand.shift()
     if (this.currentPlayer === this.player1) {
