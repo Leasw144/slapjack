@@ -78,14 +78,13 @@ class Game {
     this.player2.playerHand = shuffledDeck.slice(26, shuffledDeck.length)
   }
 
-  swapPlayerTurn(currentPlayer) {
+  becomeCurrentPlayer(currentPlayer) {
     // currentPlayer;
-    if(this.player1Turn) {
-      this.player1Turn = false
-      this.currentPlayer = this.player2
-    } else if(this.player1Turn === false){   
+    if(this.currentPlayer === player2) {
       this.currentPlayer = this.player1
-      this.player1Turn = true
+    } else if(this.currentPlayer === player1){   
+      this.currentPlayer = this.player2
+
     }
     return currentPlayer
   }
@@ -107,7 +106,7 @@ class Game {
     }
   }
 
-
+  
   checkSlap() {
     var regex = /-\d+|jack/
     var topCard = regex.exec(this.pile[0]) || [1];
@@ -119,27 +118,37 @@ class Game {
     } else if (topCard[0] === nextCard[0]) {
       this.winSet()
       return `Doubles!`
-    } else if (topCard[0] === 'jack'){
+    } else if (topCard[0] === 'jack') {
       this.winSet()
       return `Slapjack!`
     }
-    this.forfeitCard()
     return `MISSED`
   } 
-   
+  
   winSet() {
     this.currentPlayer.playerHand = this.currentPlayer.playerHand.concat(this.pile)
     this.pile = []
-    this.swapPlayerTurn()
+    this.becomeCurrentPlayer()
+  }
+  
+  checkMatch() {
+    if(game.player1.playerHand === [] && checkSlap !== `missed`) {
+      this.player2.wins++
+      alert(`Player 2 wins match!`)
+      return true
+    } else if (game.player2.playerHand === [] && checkSlap !== `missed`) {
+      this.player1.wins++
+      alert(`Player 1 wins match!`)
+      return true
+    }
+    return false
   }
 
   forfeitCard() {
     var forfeitedCard = this.currentPlayer.playerHand.shift()
     if (this.currentPlayer === this.player1) {
-      this.currentPlayer.playerHand.shift(forfeitedCard)
       this.player2.playerHand.push(forfeitedCard) 
     } else {
-        this.currentPlayer.playerHand.shift(forfeitedCard)
         this.player1.playerHand.push(forfeitedCard) 
       }
   }
