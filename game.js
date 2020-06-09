@@ -4,7 +4,7 @@ class Game {
     this.player2 = new Player(2)
     this.player1Turn = true
     this.currentPlayer = this.player1Turn ? this.player1 : this.player2
-    this.pile = []
+    this.pile = [`jack`]
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -118,7 +118,7 @@ class Game {
     } else if (topCard[0] === nextCard[0]) {
       this.winSet()
       return `Doubles!`
-    } else if (topCard[0] === 'jack'){
+    } else if (topCard[0] === 'jack') {
       this.winSet()
       return `Slapjack!`
     }
@@ -129,7 +129,7 @@ class Game {
   winSet() {
     this.currentPlayer.playerHand = this.currentPlayer.playerHand.concat(this.pile)
     this.pile = []
-    this.swapPlayerTurn()
+    this.becomeCurrentPlayer()
   }
   
   checkMatch(slapResult) {
@@ -142,17 +142,17 @@ class Game {
     }
     return false
   }
-  
-  forfeitCard() {
-    var forfeitedCard = this.currentPlayer.playerHand.shift()
-    if (this.currentPlayer === this.player1) {
-      this.currentPlayer.playerHand.shift(forfeitedCard)
-      this.player2.playerHand.push(forfeitedCard) 
-    } else {
-        this.currentPlayer.playerHand.shift(forfeitedCard)
-        this.player1.playerHand.push(forfeitedCard) 
-      }
-  }
+
+  // forfeitCard() {
+  //   var forfeitedCard = this.currentPlayer.playerHand.shift()
+  //   if (this.currentPlayer === this.player1) {
+  //     this.currentPlayer.playerHand.shift(forfeitedCard)
+  //     this.player2.playerHand.push(forfeitedCard) 
+  //   } else {
+  //       this.currentPlayer.playerHand.shift(forfeitedCard)
+  //       this.player1.playerHand.push(forfeitedCard) 
+  //     }
+  // }
 }
 
 

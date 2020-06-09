@@ -15,6 +15,16 @@ class Player {
     
   }
 
+  forfeitCard() {
+    var forfeitedCard = this.playerHand.shift()
+    if (this.currentPlayer === this.player1) {
+      this.playerHand.shift(forfeitedCard)
+      this.playerHand.push(forfeitedCard)
+    } else {
+      this.currentPlayer.playerHand.shift(forfeitedCard)
+      this.player1.playerHand.push(forfeitedCard)
+    }
+  }
 }
 
 

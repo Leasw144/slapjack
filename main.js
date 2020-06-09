@@ -2,6 +2,7 @@ var game = new Game();
 var player1 = game.player1
 var player2 = game.player2
 var pile = document.querySelector('.pile')
+var announcement = document.querySelector('.announcement')
 // var currentPlayer = game.currentPlayer
 // var currentPlayer;
 // var currentPlayer = game.player1Turn === true ? player1 : player2
@@ -32,16 +33,10 @@ function playerDeal() {
       // // //this will happen by changing the src
       // // //this function will disable??
     console.log(`you pressed Q`)
-  } else if (event.keyCode == 70) {
-    var set = game.checkSlap()
-    var match = game.checkMatch()
-      if(set === `missed`) {
-        forefeitCard()
-        alert(`MISSED`)
-      } else {
-        announceWin(set)
-
-      }
+  } else if (event.keyCode == 70) {  
+    checkingSlap()
+    
+    // var match = game.checkMatch()
     // When a player slaps, this will happen
     // // the game will check for a set win
     // // the game will check for a match win
@@ -55,7 +50,7 @@ function playerDeal() {
       removeClass()
       pile.classList.toggle('glow-p2')
       game.becomeCurrentPlayer()
-      //when a player deals, this will happen 
+      // when a player deals, this will happen 
       // // element leaves player hand and goes to pile.
       // // pile displays this card
       // // //this will happen by changing the src
@@ -72,8 +67,18 @@ function playerDeal() {
   }
 }
 
+function checkingSlap() {
+  var slapConditions = game.checkSlap()
+  if(!slapConditions === `MISSED`) {
+    alert(`PLAYER 1 WIN'S SET`)
+    announcement.innerText = `${slapConditions}`
+  } else {
+    player1.forfeitCard()
+    alert(`${slapConditions}`)
+  }
+}
+
 function announceWin(winType) {
-  var announcement = document.querySelector('.announcement')
   var p1WinCounter = document.querySelector('.p1-win-counter')
   var p2WinCounter = document.querySelector('.p2-win-counter')
   announcement.innerText = winType
@@ -88,8 +93,9 @@ function reset() {
   player1.playerHand = []
   player2.playerHand = []
   game.pile = []
-  shuffleDeck(game.deck)
+  game.shuffleDeck(game.deck)
   dealDeck()
+  announcement.innerText = `Good Luck!`
 }
 
 function removeClass() {
