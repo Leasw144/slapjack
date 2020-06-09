@@ -22,11 +22,8 @@ function distributeCards() {
 function playerDeal() {
   
   if (event.keyCode == 81 && game.currentPlayer !== player1) {
-      player1.deal()
-      pile.src = game.pile[0]
-      removeClass()
-      pile.classList.add('glow-p1')
       game.becomeCurrentPlayer()
+      currentPlayerDeals()
       //when a player deals, this will happen 
       // // element leaves player hand and goes to pile.
       // // pile displays this card
@@ -46,11 +43,8 @@ function playerDeal() {
     // // swap player
     console.log(`you pressed F`)
   } else if (event.keyCode == 80 && game.currentPlayer !== player2) {
-      player2.deal()
-      pile.src = game.pile[0]
-      removeClass()
-      pile.classList.toggle('glow-p2')
       game.becomeCurrentPlayer()
+      currentPlayerDeals()
       // when a player deals, this will happen 
       // // element leaves player hand and goes to pile.
       // // pile displays this card
@@ -73,6 +67,7 @@ function playerDeal() {
 function checkingSlap() {
   var slapConditions = game.checkSlap()
   if(!slapConditions === `MISSED`) {
+    resetPile()
     alert(`PLAYER 1 WIN'S SET`)
     game.winSet()
     announcement.innerText = `${slapConditions}`
@@ -80,6 +75,13 @@ function checkingSlap() {
     game.forfeitCard()
     alert(`${slapConditions}`)
   }
+}
+
+function currentPlayerDeals() {
+  game.currentPlayer.deal()
+  pile.src = game.pile[0]
+  removeClass()
+  game.currentPlayer === player1 ? pile.classList.add('glow-p1') : pile.classList.add('glow-p2')
 }
 
 function announceWin(winType) {
@@ -93,10 +95,16 @@ function announceWin(winType) {
   }
 }
 
-function reset() {
+function resetPile() {
+  game.pile = []
+  pile.src = './assets/back.png'
+}
+
+function resetBoard() {
   player1.playerHand = []
   player2.playerHand = []
   game.pile = []
+  pile.src = ''
   game.shuffleDeck(game.deck)
   dealDeck()
   announcement.innerText = `Good Luck!`
