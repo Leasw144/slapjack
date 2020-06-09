@@ -66,7 +66,6 @@ class Game {
       var swap1 = Math.floor((Math.random() * deck.length));
       var swap2 = Math.floor((Math.random()) * deck.length);
       var dis = deck[swap1]
-
       deck[swap1] = deck[swap2]
       deck[swap2] = dis;
     }
@@ -84,7 +83,6 @@ class Game {
       this.currentPlayer = this.player1
     } else if(this.currentPlayer === player1){   
       this.currentPlayer = this.player2
-
     }
     return currentPlayer
   }
@@ -113,6 +111,7 @@ class Game {
     var nextCard = regex.exec(this.pile[1]) || [2];
     var thirdCard = regex.exec(this.pile[2]) || [3];
     if (topCard[0] === 'jack' && game.player1.playerHand.length === 0 || game.player2.playerHand.length === 0) {
+      this.currentPlayer.wins++
       alert(`Player ${game.currentPlayer.id} has Won the match or whatever`)
     } else if (topCard[0] === thirdCard[0]) {      
       this.winSet()
@@ -123,8 +122,7 @@ class Game {
     } else if (topCard[0] === 'jack') {
       this.winSet()
       return `Slapjack!`
-    } else 
-    
+    } else  
     return `MISSED`
   } 
   
@@ -158,22 +156,6 @@ class Game {
 }
 
 
-  // setWinCondition() {
-  //   if(mainDeck[0] === mainDeck[1]) {
-  //     playerDeck.concat(mainDeck)
-  //   } else if(mainDeck[0]) {
-  //     board.filter()
-  //     this.deck = []
-  //   } else if(mainDeck[0] === mainDeck[2]) {
-  //     //same thing
-  //   }
-  //   //player one removes element[0] from thier deck, it gets pushed to player 2's deck.
-  // }
 
-  // matchWinCondition() {
-  //   if(playerDeck === []) {
-      
-  //   }
-  // }
 
   
