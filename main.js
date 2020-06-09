@@ -34,6 +34,7 @@ function playerDeal() {
       // // //this function will disable??
     console.log(`you pressed Q`)
   } else if (event.keyCode == 70) {  
+    game.currentPlayer = player1
     checkingSlap()
     
     // var match = game.checkMatch()
@@ -57,6 +58,8 @@ function playerDeal() {
       // // //this function will disable
       console.log(`you pressed P`)
   } else if (event.keyCode == 74) {
+    game.currentPlayer = player2
+    checkingSlap()
     // When a player slaps, this will happen
     // // the game will check for a set win
     // // the game will check for a match win
@@ -71,9 +74,10 @@ function checkingSlap() {
   var slapConditions = game.checkSlap()
   if(!slapConditions === `MISSED`) {
     alert(`PLAYER 1 WIN'S SET`)
+    game.winSet()
     announcement.innerText = `${slapConditions}`
   } else {
-    player1.forfeitCard()
+    game.forfeitCard()
     alert(`${slapConditions}`)
   }
 }

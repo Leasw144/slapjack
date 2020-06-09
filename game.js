@@ -4,7 +4,7 @@ class Game {
     this.player2 = new Player(2)
     this.player1Turn = true
     this.currentPlayer = this.player1Turn ? this.player1 : this.player2
-    this.pile = [`jack`]
+    this.pile = []
     this.deck = [
       './assets/blue-01.png',
       './assets/blue-02.png',
@@ -122,7 +122,6 @@ class Game {
       this.winSet()
       return `Slapjack!`
     }
-    this.forfeitCard()
     return `MISSED`
   } 
   
@@ -143,16 +142,14 @@ class Game {
     return false
   }
 
-  // forfeitCard() {
-  //   var forfeitedCard = this.currentPlayer.playerHand.shift()
-  //   if (this.currentPlayer === this.player1) {
-  //     this.currentPlayer.playerHand.shift(forfeitedCard)
-  //     this.player2.playerHand.push(forfeitedCard) 
-  //   } else {
-  //       this.currentPlayer.playerHand.shift(forfeitedCard)
-  //       this.player1.playerHand.push(forfeitedCard) 
-  //     }
-  // }
+  forfeitCard() {
+    var forfeitedCard = this.currentPlayer.playerHand.shift()
+    if (this.currentPlayer === this.player1) {
+      this.player2.playerHand.push(forfeitedCard) 
+    } else {
+        this.player1.playerHand.push(forfeitedCard) 
+      }
+  }
 }
 
 
