@@ -29,7 +29,7 @@ function playerDeal() {
     game.currentPlayer = player1
     checkingSlap()
     
-    // var match = game.checkMatch()
+    var match = game.checkMatch()
     // When a player slaps, this will happen
     // // the game will check for a set win
     // // the game will check for a match win
@@ -68,8 +68,8 @@ function checkingSlap() {
 }
 
 function currentPlayerDeals() {
-  game.currentPlayer.deal()
-  pile.src = game.pile[0]
+  var hasCards = game.currentPlayer.deal()
+  pile.src = hasCards === true ? game.pile[0] : './assets/back.png'
   removeClass()
   game.currentPlayer === player1 ? pile.classList.add('glow-p1') : pile.classList.add('glow-p2')
 }
