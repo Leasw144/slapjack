@@ -132,11 +132,11 @@ class Game {
   }
   
   checkMatch() {
-    if(game.player1.playerHand === [] && checkSlap !== `missed`) {
-      this.player2.wins++
-      alert(`Player 2 wins match!`)
+    if(game.player1 === game.currentPlayer && player2.playerHand === []) {
+      this.player1.wins++
+      alert(`Player 1 wins match!`)
       return true
-    } else if (game.player2.playerHand === [] && checkSlap !== `missed`) {
+    } else if (game.player2 === game.currentPlayer && player1.playerHand === []) {
       this.player1.wins++
       alert(`Player 1 wins match!`)
       return true

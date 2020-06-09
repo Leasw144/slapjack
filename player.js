@@ -7,7 +7,7 @@ class Player {
   }
 
   deal() {
-    if(this.playerHand === []) {
+    if(this.playerHand.length === 0) {
       return false
     }
     game.pile.unshift(this.playerHand[0])

@@ -1,7 +1,7 @@
 
 
 body {
-  background-color: #891207;
+  background-color:	#222222;
   font-family: 'Lexend Tera', sans-serif;
 }
 
@@ -49,7 +49,8 @@ img {
 }
 
 .p1-win-counter, .p2-win-counter {
-    font-size: 4em;
+    font-size: 3em;
+    color: rgb(211, 252, 252)
     display: flex;
     justify-content: center;
 }
