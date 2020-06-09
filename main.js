@@ -22,13 +22,8 @@ function distributeCards() {
 function playerDeal() {
   
   if (event.keyCode == 81 && game.currentPlayer !== player1) {
-      game.becomeCurrentPlayer()
-      currentPlayerDeals()
-      //when a player deals, this will happen 
-      // // element leaves player hand and goes to pile.
-      // // pile displays this card
-      // // //this will happen by changing the src
-      // // //this function will disable??
+    game.becomeCurrentPlayer()
+    currentPlayerDeals()
     console.log(`you pressed Q`)
   } else if (event.keyCode == 70) {  
     game.currentPlayer = player1
@@ -45,11 +40,6 @@ function playerDeal() {
   } else if (event.keyCode == 80 && game.currentPlayer !== player2) {
       game.becomeCurrentPlayer()
       currentPlayerDeals()
-      // when a player deals, this will happen 
-      // // element leaves player hand and goes to pile.
-      // // pile displays this card
-      // // //this will happen by changing the src
-      // // //this function will disable
       console.log(`you pressed P`)
   } else if (event.keyCode == 74) {
     game.currentPlayer = player2

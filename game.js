@@ -131,12 +131,14 @@ class Game {
     this.becomeCurrentPlayer()
   }
   
-  checkMatch(slapResult) {
-    if(game.player1.playerHand === [] && slapResult !== `missed`) {
+  checkMatch() {
+    if(game.player1.playerHand === [] && checkSlap !== `missed`) {
       this.player2.wins++
+      alert(`Player 2 wins match!`)
       return true
-    } else if (game.player2.playerHand === [] && slapResult !== `missed`) {
+    } else if (game.player2.playerHand === [] && checkSlap !== `missed`) {
       this.player1.wins++
+      alert(`Player 1 wins match!`)
       return true
     }
     return false
