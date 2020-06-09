@@ -112,7 +112,9 @@ class Game {
     var topCard = regex.exec(this.pile[0]) || [1];
     var nextCard = regex.exec(this.pile[1]) || [2];
     var thirdCard = regex.exec(this.pile[2]) || [3];
-    if (topCard[0] === thirdCard[0]) {      
+    if (topCard[0] === 'jack' && game.player1.playerHand.length === 0 || game.player2.playerHand.length === 0) {
+      alert(`Player ${game.currentPlayer.id} has Won the match or whatever`)
+    } else if (topCard[0] === thirdCard[0]) {      
       this.winSet()
       return `SAMICH`
     } else if (topCard[0] === nextCard[0]) {
@@ -121,7 +123,8 @@ class Game {
     } else if (topCard[0] === 'jack') {
       this.winSet()
       return `Slapjack!`
-    }
+    } else 
+    
     return `MISSED`
   } 
   
@@ -132,7 +135,7 @@ class Game {
   }
   
   checkMatch() {
-    if(game.player1 === game.currentPlayer && player2.playerHand === []) {
+    if (game.currentPlayer === game.player1 && player2.playerHand.length === 0) {
       this.player1.wins++
       alert(`Player 1 wins match!`)
       return true
