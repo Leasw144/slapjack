@@ -20,7 +20,7 @@ function distributeCards() {
 }
 
 function playerDeal() {
-  
+ 
   if (event.keyCode == 81 && game.currentPlayer !== player1) {
     game.becomeCurrentPlayer()
     currentPlayerDeals()
@@ -68,6 +68,7 @@ function checkingSlap() {
 }
 
 function currentPlayerDeals() {
+  debugger
   var hasCards = game.currentPlayer.deal()
   pile.src = hasCards === true ? game.pile[0] : './assets/back.png'
   removeClass()

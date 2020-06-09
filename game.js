@@ -66,7 +66,6 @@ class Game {
       var swap1 = Math.floor((Math.random() * deck.length));
       var swap2 = Math.floor((Math.random()) * deck.length);
       var dis = deck[swap1]
-
       deck[swap1] = deck[swap2]
       deck[swap2] = dis;
     }
@@ -84,7 +83,6 @@ class Game {
       this.currentPlayer = this.player1
     } else if(this.currentPlayer === player1){   
       this.currentPlayer = this.player2
-
     }
     return currentPlayer
   }
@@ -112,7 +110,10 @@ class Game {
     var topCard = regex.exec(this.pile[0]) || [1];
     var nextCard = regex.exec(this.pile[1]) || [2];
     var thirdCard = regex.exec(this.pile[2]) || [3];
-    if (topCard[0] === thirdCard[0]) {      
+    if (topCard[0] === 'jack' && game.player1.playerHand.length === 0 || game.player2.playerHand.length === 0) {
+      this.currentPlayer.wins++
+      alert(`Player ${game.currentPlayer.id} has Won the match or whatever`)
+    } else if (topCard[0] === thirdCard[0]) {      
       this.winSet()
       return `SAMICH`
     } else if (topCard[0] === nextCard[0]) {
@@ -121,7 +122,7 @@ class Game {
     } else if (topCard[0] === 'jack') {
       this.winSet()
       return `Slapjack!`
-    }
+    } else  
     return `MISSED`
   } 
   
@@ -132,11 +133,11 @@ class Game {
   }
   
   checkMatch() {
-    if(game.player1.playerHand === [] && checkSlap !== `missed`) {
-      this.player2.wins++
-      alert(`Player 2 wins match!`)
+    if (game.currentPlayer === game.player1 && player2.playerHand.length === 0) {
+      this.player1.wins++
+      alert(`Player 1 wins match!`)
       return true
-    } else if (game.player2.playerHand === [] && checkSlap !== `missed`) {
+    } else if (game.player2 === game.currentPlayer && player1.playerHand === []) {
       this.player1.wins++
       alert(`Player 1 wins match!`)
       return true
@@ -155,22 +156,6 @@ class Game {
 }
 
 
-  // setWinCondition() {
-  //   if(mainDeck[0] === mainDeck[1]) {
-  //     playerDeck.concat(mainDeck)
-  //   } else if(mainDeck[0]) {
-  //     board.filter()
-  //     this.deck = []
-  //   } else if(mainDeck[0] === mainDeck[2]) {
-  //     //same thing
-  //   }
-  //   //player one removes element[0] from thier deck, it gets pushed to player 2's deck.
-  // }
 
-  // matchWinCondition() {
-  //   if(playerDeck === []) {
-      
-  //   }
-  // }
 
   
