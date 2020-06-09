@@ -1,10 +1,13 @@
+
+
 body {
   background-color: #891207;
+  font-family: 'Lexend Tera', sans-serif;
 }
 
 .main {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width:100%;
   height: 100%;
 
@@ -14,6 +17,11 @@ body {
   
 }
 
+header {
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+}
 img {
   width: 16em;
   border-radius: 20px;
@@ -40,7 +48,11 @@ img {
   box-shadow: 1em 1em 3em 1em #138;
 }
 
-
+.p1-win-counter, .p2-win-counter {
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+}
 
 
 
