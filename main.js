@@ -48,7 +48,7 @@ function winSetReset(slapConditions) {
   }
   game.winSet()
   pile.src = './assets/back.png'
-  announcement.innerText = `PLAYER ${game.currentPlayer.id} WINS BY ${slapConditions}`
+  announcement.innerText = `${slapConditions}`
 }
 
 function currentPlayerDeals() {
