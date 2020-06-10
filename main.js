@@ -4,9 +4,11 @@ var player2 = game.player2
 var pile = document.querySelector('.pile')
 var announcement = document.querySelector('.announcement')
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~Event Listeners~~~~~~~~~~~~~~~~~~~~~~~~~~~
 window.addEventListener(`load`, distributeCards)
 document.addEventListener('keydown', keyPressHandler)
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~Helper Functions~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function distributeCards() {
   game.shuffleDeck(game.deck);
   game.dealDeck()
@@ -30,6 +32,13 @@ function keyPressHandler() {
   }
 }
 
+function currentPlayerDeals() {
+  var hasCards = game.currentPlayer.deal()
+  pile.src = hasCards === true ? game.pile[0] : './assets/back.png'
+  removeClass()
+  game.currentPlayer === player1 ? pile.classList.add('glow-p1') : pile.classList.add('glow-p2')
+}
+
 function checkingSlap() {
   var slapConditions = game.checkSlap()
   if(slapConditions !== `MISSED`) {
@@ -50,24 +59,6 @@ function winSetReset(slapConditions) {
   pile.src = './assets/back.png'
   announcement.innerText = `${slapConditions}`
 }
-
-function currentPlayerDeals() {
-  var hasCards = game.currentPlayer.deal()
-  pile.src = hasCards === true ? game.pile[0] : './assets/back.png'
-  removeClass()
-  game.currentPlayer === player1 ? pile.classList.add('glow-p1') : pile.classList.add('glow-p2')
-}
-
-// function announceWin(winType) {
-//   var p1WinCounter = document.querySelector('.p1-win-counter')
-//   var p2WinCounter = document.querySelector('.p2-win-counter')
-//   announcement.innerText = winType
-//   if(player1) {
-//     alert(`${player1.wins} wins`)
-//   } else if(game.currentPlayer === player2) {
-//     p2WinCounter.innerText === `${player2.wins} wins`
-//   }
-// }
 
 
 

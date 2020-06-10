@@ -9,7 +9,7 @@ Slapjack is a card game that has two players take turns dealing cards to a cente
 The game ends when one the player with zero cards in hand loses a slap.
 
 ## A Road Map
-Because the final assessment was on a Friday, actual coding did not occur until Saturday. However, I spent some time sketching a loose structure of the HTML and also explicitly writing out the rules as seen below, which clarified a lot of things when I actually got down to coding.
+Because the final assessment was on a Friday, actual coding did not occur until Saturday. However, I spent some time sketching a loose structure of the HTML and also explicitly writing out the rules as seen below, which clarified a lot of things when I actually got down to coding. Take a look at these oversized images!
 ![notes](./assets/notes.jpg)
 ![doesThisEvenWork](./assets/sketch.jpg)
 
@@ -30,7 +30,7 @@ Two primary videos were important for understanding regex:
 - [Tech Sith](https://www.youtube.com/watch?v=rPNGB0ZLvdw&t=1s)
 
 ## CSS work
-For the most part, the general CSS structure was fairly straight forward. Because I had some time left, I decided to restyle my red CSS background into something a bit cooler. I mostly blame the style for the [music](https://www.youtube.com/watch?v=9D2K2wvhinE) I was listening to that gave it a Tron like vibe.
+For the most part, the general CSS structure was fairly straight forward. Because I had some time left, I decided to restyle my red CSS background into something a bit cooler. I mostly blame the style for the [music](https://www.youtube.com/watch?v=9D2K2wvhinE) I was listening to that gave it a Tron like vibe. The background with the tiny grid is loosely based on [MetaKirby's](https://metakirby5.github.io/yorha/) template design off of Nier Automata's menu screen. I was able to figure out what was making the grid and replicate and enlarge them as I saw fit for this project.
 
 It then led me down this rabbit-hole where I learned about box `shadow` and `text-shadow` which produces the glow.
 
@@ -44,10 +44,12 @@ currentPlayer would continue to haunt me in main.js where the status of current 
 This would eventually lead me to changing the nature of my `swapCurrentPlayer` function; instead of switching it when a player deals, the player "becomes" the currentPlayer when an action is taken which would help when it came down to slapping cards.
 
 ## Room for improvement
-As it is right now, functions are, in my opinion, a little tangled. Logic between checking the array, and then also displaying it properly was always messy, so if given the chance to revisit the project, I'd probably try to separate that code a bit more to make it DRY. Additionally, as of right now, localStorage has not been included in part because I'd rather spend the time left refactoring/cleaning up code but that can also be included in the future.
+As it is right now, functions are, in my opinion, a little tangled. Logic between checking the array, and then also displaying it properly was always messy, so if given the chance to revisit the project, I'd probably try to separate that code a bit more to make it DRY. Additionally, as of right now, localStorage has not been included in part because I'd rather spend the time left refactoring/cleaning up code but that can also be included in the future but were it included, it would probably trigger storing the data when someone won a match.
 
 ## Victories
 Again, the gamble on regex turned out to be a huge win considering what I didn't really know where else to go. There might have been a simpler way but I'm still satisfied it worked AT ALL.
 
 ## Special Thanks
-[Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
+- [metakirby5](https://github.com/metakirby5/yorha)
+- [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
+
