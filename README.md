@@ -44,12 +44,12 @@ currentPlayer would continue to haunt me in main.js where the status of current 
 This would eventually lead me to changing the nature of my `swapCurrentPlayer` function; instead of switching it when a player deals, the player "becomes" the currentPlayer when an action is taken which would help when it came down to slapping cards.
 
 ## Room for improvement
-As it is right now, functions are, in my opinion, a little tangled. Logic between checking the array, and then also displaying it properly was always messy, so if given the chance to revisit the project, I'd probably try to separate that code a bit more to make it DRY. Additionally, as of right now, localStorage has not been included in part because I'd rather spend the time left refactoring/cleaning up code but that can also be included in the future but were it included, it would probably trigger storing the data when someone won a match.
+As it is right now, functions are, in my opinion, a little tangled. Logic between checking the array, and then also displaying it properly was always messy, so if given the chance to revisit the project, I'd probably try to separate that code a bit more to make it DRY. Additionally, as of right now, localStorage has not been included in part because I'd rather spend the time left refactoring/cleaning up code but that can also be included in the future but were it included, it would probably trigger storing the data when someone won a match. Commits are also lower than I was hoping for but that's more or less because I was caught up in whatever problem remember to commit, other times, I wasn't sure if the code I was experimenting with was worth committing.
 
 ## Victories
 Again, the gamble on regex turned out to be a huge win considering what I didn't really know where else to go. There might have been a simpler way but I'm still satisfied it worked AT ALL.
 
 ## Special Thanks
 - [metakirby5](https://github.com/metakirby5/yorha)
-- [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
-
+- [Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
+- [Css tricks for showing me how to do a stacked paper effect that literally lasts until someone does anything on the dom](https://css-tricks.com/snippets/css/stack-of-paper/)
