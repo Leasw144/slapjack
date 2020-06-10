@@ -106,13 +106,14 @@ class Game {
 
   
   checkSlap() {
+    debugger
     var regex = /-\d+|jack/
     var topCard = regex.exec(this.pile[0]) || [1];
     var nextCard = regex.exec(this.pile[1]) || [2];
     var thirdCard = regex.exec(this.pile[2]) || [3];
     if (topCard[0] === 'jack' && game.player1.playerHand.length === 0 || game.player2.playerHand.length === 0) {
       this.currentPlayer.wins++
-      alert(`Player ${game.currentPlayer.id} has Won the match or whatever`)
+      return (`Player ${this.currentPlayer.id} Wins the Match!`)
     } else if (topCard[0] === thirdCard[0]) {      
       this.winSet()
       return `SAMICH`
