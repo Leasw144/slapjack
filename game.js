@@ -87,24 +87,6 @@ class Game {
     return currentPlayer
   }
 
-  regexTest() {
-    var cardString = this.pile[0]
-    var nextCard = this.pile[1]
-    var regex = /-\d+|jack/
-    var m = regex.exec(cardString)
-  
-    console.log(m)
-    var v = regex.exec(nextCard);
- 
-    if (m[1] === v[1]) {
-      console.log('works')
-      alert(m[0])
-    } else{
-      return 'doesn\'t work'
-    }
-  }
-
-  
   checkSlap() {
     debugger
     var regex = /-\d+|jack/
