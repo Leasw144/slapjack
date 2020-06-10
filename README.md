@@ -39,8 +39,9 @@ It then led me down this rabbit-hole where I learned about box `shadow` and `tex
 ## Challenges
 For about two days, I was stuck on how the status of `currentPlayer` would be handled, if at all. early iterations had me making a property of a boolean property where `true` was player one and `false` was player 2. I'm still not 100% sure `game.player1Turn` is needed. With more time, I would probably refactor it to make more sense.
 
-currentPlayer would continue to haunt me in main.js where the status of current player was being transferred as soon as a deal happened, so concatenation of cards would be distributed incorrectly.
+currentPlayer would continue to haunt me in main.js where the status of current player was being transferred as soon as a deal happened, so concatenation of cards would be distributed incorrectly. 
 ![player 2 was agressive](./assets/captain.jpg)
+This would eventually lead me to changing the nature of my `swapCurrentPlayer` function; instead of switching it when a player deals, the player "becomes" the currentPlayer when an action is taken which would help when it came down to slapping cards.
 
 ## Room for improvement
 As it is right now, functions are, in my opinion, a little tangled. Logic between checking the array, and then also displaying it properly was always messy, so if given the chance to revisit the project, I'd probably try to separate that code a bit more to make it DRY. Additionally, as of right now, localStorage has not been included in part because I'd rather spend the time left refactoring/cleaning up code but that can also be included in the future.
@@ -49,4 +50,4 @@ As it is right now, functions are, in my opinion, a little tangled. Logic betwee
 Again, the gamble on regex turned out to be a huge win considering what I didn't really know where else to go. There might have been a simpler way but I'm still satisfied it worked AT ALL.
 
 ## Special Thanks
-Fisher-Yates.
+[Fisher-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle).
