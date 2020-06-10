@@ -40,7 +40,9 @@ It then led me down this rabbit-hole where I learned about box `shadow` and `tex
 For about two days, I was stuck on how the status of `currentPlayer` would be handled, if at all. early iterations had me making a property of a boolean property where `true` was player one and `false` was player 2. I'm still not 100% sure `game.player1Turn` is needed. With more time, I would probably refactor it to make more sense.
 
 currentPlayer would continue to haunt me in main.js where the status of current player was being transferred as soon as a deal happened, so concatenation of cards would be distributed incorrectly. 
+
 ![player 2 was agressive](./assets/captain.jpg)
+
 This would eventually lead me to changing the nature of my `swapCurrentPlayer` function; instead of switching it when a player deals, the player "becomes" the currentPlayer when an action is taken which would help when it came down to slapping cards.
 
 ## Room for improvement
