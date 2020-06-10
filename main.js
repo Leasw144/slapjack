@@ -17,35 +17,19 @@ function distributeCards() {
 
 function keyPressHandler() {
   if (event.keyCode == 81 && game.currentPlayer !== player1) {
-    game.becomeCurrentPlayer()
-    announcement.innerText = `Player 1 deals!`
-    currentPlayerDeals()
+      game.becomeCurrentPlayer()
+      announcement.innerText = `Player 1 deals!`
+      currentPlayerDeals()
   } else if (event.keyCode == 70) {  
-    game.currentPlayer = player1
-    checkingSlap()
-    var match = game.checkMatch()
-    // When a player slaps, this will happen
-    // // the game will check for a set win
-    // // the game will check for a match win
-    // // if both set and match return false, player forfeits their card
-    // // show alert that you done messed up
-    // // swap player
-    console.log(`you pressed F`)
+      game.currentPlayer = player1
+      checkingSlap()
   } else if (event.keyCode == 80 && game.currentPlayer !== player2) {
       game.becomeCurrentPlayer()
       announcement.innerText = `Player 2 deals!`
       currentPlayerDeals()
-      console.log(`you pressed P`)
   } else if (event.keyCode == 74) {
-    game.currentPlayer = player2
-    checkingSlap()
-    // When a player slaps, this will happen
-    // // the game will check for a set win
-    // // the game will check for a match win
-    // // if both set and match return false, player forfeits their card
-    // // show alert that you done messed up
-    // // swap player
-    console.log(`you pressed J`)
+      game.currentPlayer = player2
+      checkingSlap()
   }
 }
 
@@ -56,7 +40,6 @@ function checkingSlap() {
   } else {
     game.forfeitCard()
     announcement.innerText = `${slapConditions}`
-    alert(`${slapConditions}`)
   }
 }
 
@@ -67,16 +50,16 @@ function currentPlayerDeals() {
   game.currentPlayer === player1 ? pile.classList.add('glow-p1') : pile.classList.add('glow-p2')
 }
 
-function announceWin(winType) {
-  var p1WinCounter = document.querySelector('.p1-win-counter')
-  var p2WinCounter = document.querySelector('.p2-win-counter')
-  announcement.innerText = winType
-  if(player1) {
-    alert(`${player1.wins} wins`)
-  } else if(game.currentPlayer === player2) {
-    p2WinCounter.innerText === `${player2.wins} wins`
-  }
-}
+// function announceWin(winType) {
+//   var p1WinCounter = document.querySelector('.p1-win-counter')
+//   var p2WinCounter = document.querySelector('.p2-win-counter')
+//   announcement.innerText = winType
+//   if(player1) {
+//     alert(`${player1.wins} wins`)
+//   } else if(game.currentPlayer === player2) {
+//     p2WinCounter.innerText === `${player2.wins} wins`
+//   }
+// }
 
 
 
@@ -95,6 +78,9 @@ function removeClass() {
 }
 
 function winSetReset(slapConditions) {
+  if (slapConditions === `Player ${this.currentPlayer.id} Wins the Match!`) {
+    alert(`conditional works`) 
+  }
   game.winSet()
   pile.src = './assets/back.png'
   announcement.innerText = `PLAYER ${ game.currentPlayer.id } WINS BY ${ slapConditions }`

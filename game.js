@@ -112,7 +112,7 @@ class Game {
     var thirdCard = regex.exec(this.pile[2]) || [3];
     if (topCard[0] === 'jack' && game.player1.playerHand.length === 0 || game.player2.playerHand.length === 0) {
       this.currentPlayer.wins++
-      return (`Slapjack!`)
+      return (`Player ${this.currentPlayer.id} Wins the Match!`)
     } else if (topCard[0] === thirdCard[0]) {      
       this.winSet()
       return `SAMICH`

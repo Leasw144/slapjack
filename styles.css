@@ -1,8 +1,22 @@
 
 
 body {
-  background-color:	#222222;
+  background-color:	#212121;
   font-family: 'Lexend Tera', sans-serif;
+  background-size: 10px 10px;
+  background-image: linear-gradient(90deg, transparent, transparent 3px, rgba(17, 17, 17, 0.07) 4px),
+    linear-gradient(transparent, transparent 3px, rgba(0,0,0,.07) 4px);
+  /* color: $color; */
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 300;
+  margin: 0;
+  min-height: 100vh;
+  /* box-shadow: inset 0 0 150px rgba($color, .4), inset 0 0 150px rgba($color, .3); */
+  
+  display: flex;
+  /* min-height: 100vh; */
+  flex-direction: column;
+  /* letter-spacing: $letterSpacing; */
 }
 
 .main {
@@ -14,14 +28,19 @@ body {
 }
 
 .board {
+  color: #0FF;
   
 }
 
 header {
     font-size: 3em;
+    text-shadow: 2px 2px 15px white;
+    color: #0FF;
     display: flex;
     justify-content: center;
+    
 }
+
 img {
   width: 16em;
   border-radius: 20px;
@@ -40,19 +59,28 @@ img {
 }
 .glow-p1 {
   background-color: #fff;
-  box-shadow: -1em 1em 2em 0em #0FF
+  box-shadow: 0em 0em 3em .5em #0FF
 }
 
 .glow-p2 {
   background-color: #fff;
-  box-shadow: 1em 1em 3em 1em #138;
+  box-shadow: 0em 0em 3em .75em rgb(211, 69, 18);
 }
 
 .p1-win-counter, .p2-win-counter {
     font-size: 3em;
-    color: rgb(211, 252, 252)
+    color: rgb(220, 247, 247);
     display: flex;
     justify-content: center;
+    margin-top: 1em;
+}
+
+.p1-win-counter {
+  text-shadow: 2px 2px 15px #0FF;
+}
+
+.p2-win-counter {
+  text-shadow: 2px 2px 15px rgb(211, 69, 18)
 }
 
 
