@@ -1,3 +1,4 @@
+
 var game = new Game();
 var player1 = game.player1
 var player2 = game.player2
@@ -9,9 +10,10 @@ window.addEventListener(`load`, distributeCards)
 document.addEventListener('keydown', keyPressHandler)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~Helper Functions~~~~~~~~~~~~~~~~~~~~~~~~~~~
-function distributeCards() {
+function distributeCards(player1Wins, player2Wins) {
   game.shuffleDeck(game.deck);
   game.dealDeck()
+  updateWins()
 }
 
 function keyPressHandler() {
@@ -64,7 +66,8 @@ function winSetReset(slapConditions) {
 
 function resetBoard() {
   alert(`start new game`)
-  game.currentPlayer.saveWinsToStorage();
+  game.player1.saveWinsToStorage();
+  game.player2.saveWinsToStorage();
   player1.playerHand = []
   player2.playerHand = []
   game.pile = []
@@ -78,3 +81,9 @@ function removeClass() {
   pile.className = ''
 }
 
+function updateWins() {
+  var player1Wins = document.querySelector('.p1-win-counter')
+  var player2Wins = document.querySelector('.p2-win-counter')
+  player1Wins.innerText = `${player1.wins} Wins`
+  player2Wins.innerText = `${player2.wins} Wins`
+}
