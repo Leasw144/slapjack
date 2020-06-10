@@ -3,32 +3,25 @@ var player1 = game.player1
 var player2 = game.player2
 var pile = document.querySelector('.pile')
 var announcement = document.querySelector('.announcement')
-// var currentPlayer = game.currentPlayer
-// var currentPlayer;
-// var currentPlayer = game.player1Turn === true ? player1 : player2
+
 
 
 window.addEventListener(`load`, distributeCards)
-document.addEventListener('keydown', playerDeal)
+document.addEventListener('keydown', keyPressHandler)
 
 
 function distributeCards() {
-  console.log(`this is working`)
   game.shuffleDeck(game.deck);
   game.dealDeck()
-  game.swapPlayerTurn
 }
 
-function playerDeal() {
- 
+function keyPressHandler() {
   if (event.keyCode == 81 && game.currentPlayer !== player1) {
     game.becomeCurrentPlayer()
     currentPlayerDeals()
-    console.log(`you pressed Q`)
   } else if (event.keyCode == 70) {  
     game.currentPlayer = player1
     checkingSlap()
-    
     var match = game.checkMatch()
     // When a player slaps, this will happen
     // // the game will check for a set win
@@ -57,18 +50,17 @@ function playerDeal() {
 function checkingSlap() {
   var slapConditions = game.checkSlap()
   if(!slapConditions === `MISSED`) {
-    resetPile()
-    alert(`PLAYER 1 WIN'S SET`)
+    announcement.innerText = `PLAYER ${game.currentPlayer.id} WINS BY ${slapConditions}`
     game.winSet()
     announcement.innerText = `${slapConditions}`
   } else {
     game.forfeitCard()
+    announcement.innerText = `${slapConditions}`
     alert(`${slapConditions}`)
   }
 }
 
 function currentPlayerDeals() {
-  debugger
   var hasCards = game.currentPlayer.deal()
   pile.src = hasCards === true ? game.pile[0] : './assets/back.png'
   removeClass()
@@ -86,10 +78,7 @@ function announceWin(winType) {
   }
 }
 
-function resetPile() {
-  game.pile = []
-  pile.src = './assets/back.png'
-}
+
 
 function resetBoard() {
   player1.playerHand = []
@@ -103,4 +92,11 @@ function resetBoard() {
 
 function removeClass() {
   pile.className = ''
+}
+
+function winSetReset() {
+  pile.src = './assets/back.png'
+  announcement.innerText = `PLAYER ${game.currentPlayer.id} WINS BY ${slapConditions}`
+  game.winSet()
+  announcement.innerText = `${slapConditions}`
 }
