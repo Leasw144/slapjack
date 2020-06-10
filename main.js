@@ -18,6 +18,7 @@ function distributeCards() {
 function keyPressHandler() {
   if (event.keyCode == 81 && game.currentPlayer !== player1) {
     game.becomeCurrentPlayer()
+    announcement.innerText = `Player 1 deals!`
     currentPlayerDeals()
   } else if (event.keyCode == 70) {  
     game.currentPlayer = player1
@@ -32,6 +33,7 @@ function keyPressHandler() {
     console.log(`you pressed F`)
   } else if (event.keyCode == 80 && game.currentPlayer !== player2) {
       game.becomeCurrentPlayer()
+      announcement.innerText = `Player 2 deals!`
       currentPlayerDeals()
       console.log(`you pressed P`)
   } else if (event.keyCode == 74) {
@@ -50,9 +52,7 @@ function keyPressHandler() {
 function checkingSlap() {
   var slapConditions = game.checkSlap()
   if(!slapConditions === `MISSED`) {
-    announcement.innerText = `PLAYER ${game.currentPlayer.id} WINS BY ${slapConditions}`
-    game.winSet()
-    announcement.innerText = `${slapConditions}`
+    winSetReset(slapConditions)
   } else {
     game.forfeitCard()
     announcement.innerText = `${slapConditions}`
@@ -94,9 +94,8 @@ function removeClass() {
   pile.className = ''
 }
 
-function winSetReset() {
-  pile.src = './assets/back.png'
-  announcement.innerText = `PLAYER ${game.currentPlayer.id} WINS BY ${slapConditions}`
+function winSetReset(slapConditions) {
   game.winSet()
-  announcement.innerText = `${slapConditions}`
+  pile.src = './assets/back.png'
+  announcement.innerText = `PLAYER ${ game.currentPlayer.id } WINS BY ${ slapConditions }`
 }
