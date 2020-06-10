@@ -4,11 +4,8 @@ var player2 = game.player2
 var pile = document.querySelector('.pile')
 var announcement = document.querySelector('.announcement')
 
-
-
 window.addEventListener(`load`, distributeCards)
 document.addEventListener('keydown', keyPressHandler)
-
 
 function distributeCards() {
   game.shuffleDeck(game.deck);
@@ -39,8 +36,19 @@ function checkingSlap() {
     winSetReset(slapConditions)
   } else {
     game.forfeitCard()
-    announcement.innerText = `${slapConditions}`
+    announcement.innerText = `MISSED SLAP!!!`
   }
+}
+
+function winSetReset(slapConditions) {
+  if (slapConditions === `Player ${game.currentPlayer.id} Wins the Match!`) {
+    var winCounter = document.querySelector(`.p${game.currentPlayer.id}-win-counter`)
+    winCounter.innerHTML = `${game.currentPlayer.wins} wins`
+    resetBoard()
+  }
+  game.winSet()
+  pile.src = './assets/back.png'
+  announcement.innerText = `PLAYER ${game.currentPlayer.id} WINS BY ${slapConditions}`
 }
 
 function currentPlayerDeals() {
@@ -69,8 +77,7 @@ function resetBoard() {
   player2.playerHand = []
   game.pile = []
   pile.src = './assets/back.png'
-  game.shuffleDeck(game.deck)
-  game.dealDeck(game.deck)
+  distributeCards()
   announcement.innerText = `Good Luck!`
 
 }
@@ -79,15 +86,3 @@ function removeClass() {
   pile.className = ''
 }
 
-function winSetReset(slapConditions) {
-  debugger
-  if (slapConditions === `Player ${game.currentPlayer.id} Wins the Match!`) {
-    console.log(`slapjack achieved`)
-    var winCounter = document.querySelector(`.p${game.currentPlayer.id}-win-counter`)
-    winCounter.innerHTML = `${game.currentPlayer.wins} wins`
-    resetBoard()
-  }
-  game.winSet()
-  pile.src = './assets/back.png'
-  announcement.innerText = `PLAYER ${ game.currentPlayer.id } WINS BY ${ slapConditions }`
-}
