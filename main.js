@@ -64,6 +64,7 @@ function winSetReset(slapConditions) {
 
 function resetBoard() {
   alert(`start new game`)
+  game.currentPlayer.saveWinsToStorage();
   player1.playerHand = []
   player2.playerHand = []
   game.pile = []

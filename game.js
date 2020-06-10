@@ -121,6 +121,8 @@ class Game {
         this.player1.playerHand.push(forfeitedCard) 
       }
   }
+
+  
 }
 
 
