@@ -78,7 +78,6 @@ class Game {
   }
 
   becomeCurrentPlayer(currentPlayer) {
-    // currentPlayer;
     if(this.currentPlayer === player2) {
       this.currentPlayer = this.player1
     } else if(this.currentPlayer === player1){   
@@ -113,7 +112,6 @@ class Game {
     this.pile = []
     this.becomeCurrentPlayer()
   }
-
 
   forfeitCard() {
     var forfeitedCard = this.currentPlayer.playerHand.shift()
