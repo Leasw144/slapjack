@@ -35,7 +35,7 @@ function keyPressHandler() {
 
 function checkingSlap() {
   var slapConditions = game.checkSlap()
-  if(!slapConditions === `MISSED`) {
+  if(slapConditions !== `MISSED`) {
     winSetReset(slapConditions)
   } else {
     game.forfeitCard()
@@ -64,13 +64,15 @@ function currentPlayerDeals() {
 
 
 function resetBoard() {
+  alert(`start new game`)
   player1.playerHand = []
   player2.playerHand = []
   game.pile = []
-  pile.src = ''
+  pile.src = './assets/back.png'
   game.shuffleDeck(game.deck)
-  dealDeck()
+  game.dealDeck(game.deck)
   announcement.innerText = `Good Luck!`
+
 }
 
 function removeClass() {
@@ -78,8 +80,12 @@ function removeClass() {
 }
 
 function winSetReset(slapConditions) {
-  if (slapConditions === `Player ${this.currentPlayer.id} Wins the Match!`) {
-    alert(`conditional works`) 
+  debugger
+  if (slapConditions === `Player ${game.currentPlayer.id} Wins the Match!`) {
+    console.log(`slapjack achieved`)
+    var winCounter = document.querySelector(`.p${game.currentPlayer.id}-win-counter`)
+    winCounter.innerHTML = `${game.currentPlayer.wins} wins`
+    resetBoard()
   }
   game.winSet()
   pile.src = './assets/back.png'

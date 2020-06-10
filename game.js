@@ -106,6 +106,7 @@ class Game {
 
   
   checkSlap() {
+    debugger
     var regex = /-\d+|jack/
     var topCard = regex.exec(this.pile[0]) || [1];
     var nextCard = regex.exec(this.pile[1]) || [2];
