@@ -17,6 +17,7 @@ class Player {
   saveWinsToStorage() {
     localStorage.setItem(`player-${this.id}-wins`, JSON.stringify(this.wins));
   }
+
 }
 
 
