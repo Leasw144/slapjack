@@ -4,12 +4,11 @@ var player2 = game.player2
 var pile = document.querySelector('.pile')
 var announcement = document.querySelector('.announcement')
 
-
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~Event Listeners~~~~~~~~~~~~~~~~~~~~~~~~~~~
 window.addEventListener(`load`, distributeCards)
 document.addEventListener('keydown', keyPressHandler)
 
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~Helper Functions~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function distributeCards() {
   game.shuffleDeck(game.deck);
   game.dealDeck()
@@ -33,16 +32,6 @@ function keyPressHandler() {
   }
 }
 
-function checkingSlap() {
-  var slapConditions = game.checkSlap()
-  if(slapConditions !== `MISSED`) {
-    winSetReset(slapConditions)
-  } else {
-    game.forfeitCard()
-    announcement.innerText = `${slapConditions}`
-  }
-}
-
 function currentPlayerDeals() {
   var hasCards = game.currentPlayer.deal()
   pile.src = hasCards === true ? game.pile[0] : './assets/back.png'
@@ -50,27 +39,37 @@ function currentPlayerDeals() {
   game.currentPlayer === player1 ? pile.classList.add('glow-p1') : pile.classList.add('glow-p2')
 }
 
-// function announceWin(winType) {
-//   var p1WinCounter = document.querySelector('.p1-win-counter')
-//   var p2WinCounter = document.querySelector('.p2-win-counter')
-//   announcement.innerText = winType
-//   if(player1) {
-//     alert(`${player1.wins} wins`)
-//   } else if(game.currentPlayer === player2) {
-//     p2WinCounter.innerText === `${player2.wins} wins`
-//   }
-// }
+function checkingSlap() {
+  var slapConditions = game.checkSlap()
+  if(slapConditions !== `MISSED`) {
+    winSetReset(slapConditions)
+  } else {
+    game.forfeitCard()
+    announcement.innerText = `MISSED SLAP!!!`
+  }
+}
+
+function winSetReset(slapConditions) {
+  if (slapConditions === `Player ${game.currentPlayer.id} Wins the Match!`) {
+    var winCounter = document.querySelector(`.p${game.currentPlayer.id}-win-counter`)
+    winCounter.innerHTML = `${game.currentPlayer.wins} wins`
+    resetBoard()
+  }
+  game.winSet()
+  pile.src = './assets/back.png'
+  announcement.innerText = `${slapConditions}`
+}
 
 
 
 function resetBoard() {
   alert(`start new game`)
+  game.currentPlayer.saveWinsToStorage();
   player1.playerHand = []
   player2.playerHand = []
   game.pile = []
   pile.src = './assets/back.png'
-  game.shuffleDeck(game.deck)
-  game.dealDeck(game.deck)
+  distributeCards()
   announcement.innerText = `Good Luck!`
 
 }
@@ -79,15 +78,3 @@ function removeClass() {
   pile.className = ''
 }
 
-function winSetReset(slapConditions) {
-  debugger
-  if (slapConditions === `Player ${game.currentPlayer.id} Wins the Match!`) {
-    console.log(`slapjack achieved`)
-    var winCounter = document.querySelector(`.p${game.currentPlayer.id}-win-counter`)
-    winCounter.innerHTML = `${game.currentPlayer.wins} wins`
-    resetBoard()
-  }
-  game.winSet()
-  pile.src = './assets/back.png'
-  announcement.innerText = `PLAYER ${ game.currentPlayer.id } WINS BY ${ slapConditions }`
-}

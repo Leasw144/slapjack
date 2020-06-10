@@ -78,7 +78,6 @@ class Game {
   }
 
   becomeCurrentPlayer(currentPlayer) {
-    // currentPlayer;
     if(this.currentPlayer === player2) {
       this.currentPlayer = this.player1
     } else if(this.currentPlayer === player1){   
@@ -87,26 +86,7 @@ class Game {
     return currentPlayer
   }
 
-  regexTest() {
-    var cardString = this.pile[0]
-    var nextCard = this.pile[1]
-    var regex = /-\d+|jack/
-    var m = regex.exec(cardString)
-  
-    console.log(m)
-    var v = regex.exec(nextCard);
- 
-    if (m[1] === v[1]) {
-      console.log('works')
-      alert(m[0])
-    } else{
-      return 'doesn\'t work'
-    }
-  }
-
-  
   checkSlap() {
-    debugger
     var regex = /-\d+|jack/
     var topCard = regex.exec(this.pile[0]) || [1];
     var nextCard = regex.exec(this.pile[1]) || [2];
@@ -132,19 +112,6 @@ class Game {
     this.pile = []
     this.becomeCurrentPlayer()
   }
-  
-  checkMatch() {
-    if (game.currentPlayer === game.player1 && player2.playerHand.length === 0) {
-      this.player1.wins++
-      alert(`Player 1 wins match!`)
-      return true
-    } else if (game.player2 === game.currentPlayer && player1.playerHand === []) {
-      this.player1.wins++
-      alert(`Player 1 wins match!`)
-      return true
-    }
-    return false
-  }
 
   forfeitCard() {
     var forfeitedCard = this.currentPlayer.playerHand.shift()
@@ -154,6 +121,8 @@ class Game {
         this.player1.playerHand.push(forfeitedCard) 
       }
   }
+
+  
 }
 
 
