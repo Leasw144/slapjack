@@ -114,19 +114,7 @@ class Game {
     this.pile = []
     this.becomeCurrentPlayer()
   }
-  
-  checkMatch() {
-    if (game.currentPlayer === game.player1 && player2.playerHand.length === 0) {
-      this.player1.wins++
-      alert(`Player 1 wins match!`)
-      return true
-    } else if (game.player2 === game.currentPlayer && player1.playerHand === []) {
-      this.player1.wins++
-      alert(`Player 1 wins match!`)
-      return true
-    }
-    return false
-  }
+
 
   forfeitCard() {
     var forfeitedCard = this.currentPlayer.playerHand.shift()
